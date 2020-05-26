@@ -11,6 +11,7 @@ templates:
   ctl.erb: bin/nfsv3driver_ctl
   start.sh.erb: bin/start.sh
   drain.erb: bin/drain
+  bpm.yml.erb: config/bpm.yml
 
 packages:
 - nfs-debs
