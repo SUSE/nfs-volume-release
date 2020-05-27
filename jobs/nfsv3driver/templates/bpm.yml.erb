@@ -2,7 +2,7 @@ processes:
 - name: nfsv3driver
   executable: /var/vcap/jobs/nfsv3driver/bin/start.sh
   hooks:
-    pre_start: /var/vcap/jobs/nfsv3driver/bin/pre-start
+    pre_start: /var/vcap/jobs/nfsv3driver/bin/install
   additional_volumes:
   - path: /var/vcap/data/voldrivers
     writable: true
