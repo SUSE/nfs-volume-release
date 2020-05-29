@@ -10,9 +10,11 @@ templates:
   services.json.erb: config/services.json
   start.sh.erb: start.sh
   uaa_ca.crt.erb: uaa_ca.crt
+  bpm.yml.erb: config/bpm.yml
 
 packages:
   - nfsbroker
+  - cf-cli-6-linux
 
 consumes:
   - name: credhub

@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 set -e # exit immediately if a simple command exits with a non-zero status
 set -u # report the usage of uninitialized variables
 
@@ -13,7 +14,15 @@ cd $BOSH_COMPILE_TARGET
 tar -xzvf openldap/openldap-2.4.44.tgz
 cd openldap-2.4.44
 
+# We don't have groff (which provides soelim) in the stemcell; since that's only
+# used to generate documentation (that we don't care about) anyway, just make a
+# stub that doesn't do anything useful.
+mkdir -p "${HOME}/bin"
+ln -s /usr/bin/true "${HOME}/bin/soelim"
+export PATH="${PATH}:${HOME}/bin"
+
 export CPPFLAGS="-I ${BDB_PATH}/include"
+export LDFLAGS="-L${BDB_PATH}/lib"
 export LD_LIBRARY_PATH="${BDB_PATH}/lib"
 ./configure --prefix=${BOSH_INSTALL_TARGET}
 
